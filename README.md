@@ -19,17 +19,11 @@ You can find more details about **RNA-FM** in our paper, ["" (xx et al., 2022).]
 
 <details><summary>Table of contents</summary>
   
-- [Comparison to related works](#perf-related)
+- [Setup Environment](#Setup Environment)
+- [Pre-trained Models](#Available Pretrained Models)
 - [Usage](#usage)
-  - [Quick Start](#quickstart)
-  - [Compute embeddings in bulk from FASTA](#bulk-fasta)
-  - [Notebooks](#notebooks)
-- [Benchmarks](#perf)
-  - [Comparison on several tasks](#perf-related)
-- [Available Models and Datasets](#available)
-  - [Pre-trained Models](#available-models)
-  - [ESM Structural Split Dataset](#available-esmssd)
-  - [Pre-training Dataset Split](#available-pretraining-split)
+  - [RNA-FM Embedding Generation](#RNA-FM Embedding Generation)
+  - [RNA Secondary Structure Prediction](#RNA Secondary Structure Prediction)
 - [Citations](#citations)
 - [License](#license)
 </details>
@@ -40,7 +34,7 @@ You can find more details about **RNA-FM** in our paper, ["" (xx et al., 2022).]
   
 </details>
 
-## Create Environment with Conda
+## Create Environment with Conda <a name="Setup Environment"></a>
 ```
 conda env create -f environment.yml
 ```
@@ -50,22 +44,45 @@ conda activate RNA-FM
 cd ./redevelop
 ```
 
-## Access pre-trained models.
+## Access pre-trained models. <a name="Available Pretrained Models"></a>
 download from [this gdrive link]() and place them into the `data` folder.
 
-## Apply RNA-FM.
-### 1. Embedding Extraction
+## Apply RNA-FM. <a name="Usage"></a>
+### 1. Embedding Extraction. <a name="RNA-FM Embedding Generation"></a>
 ```
 python launch/predict.py --config="pretrained/extract_embedding.yml" \
 --data_path="./data/examples/example.fasta" --save_dir="./resuts" \
 --save_frequency 1 --save_embeddings
 ```
---config="pretrained/extract_embedding.yml" --data_path="./data/examples/example.fasta" --save_dir="./resuts" --save_frequency 1 --save_embeddings
 
-### 2. Downstream Prediction - RNA secondary structure
+### 2. Downstream Prediction - RNA secondary structure. <a name="RNA Secondary Structure Prediction"></a>
 ```
 python launch/predict.py --config="pretrained/ss_prediction.yml" \
 --data_path="./data/examples/example.fasta" --save_dir="./resuts" \
 --save_frequency 1
 ```
---config="pretrained/ss_prediction.yml" --data_path="./data/examples/example.fasta" --save_dir="./resuts" --save_frequency 1
+## Citations <a name="citations"></a>
+
+If you find the models useful in your research, we ask that you cite the relevant paper:
+
+For RNA-FM:
+
+```bibtex
+@article{meier2021language,
+  author = {Meier, Joshua and Rao, Roshan and Verkuil, Robert and Liu, Jason and Sercu, Tom and Rives, Alexander},
+  title = {Language models enable zero-shot prediction of the effects of mutations on protein function},
+  year={2021},
+  doi={10.1101/2021.07.09.450648},
+  url={https://www.biorxiv.org/content/10.1101/2021.07.09.450648v1},
+  journal={bioRxiv}
+}
+```
+
+The model of this code builds on the [esm](https://github.com/facebookresearch/esm) sequence modeling framework. \
+And we use [fairseq](https://github.com/pytorch/fairseq) sequence modeling framework to train our RNA language modeling. \
+We very appreciate these two excellent works!
+
+## License <a name="license"></a>
+
+This source code is licensed under the MIT license found in the `LICENSE` file
+in the root directory of this source tree.
