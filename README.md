@@ -45,7 +45,7 @@ cd ./redevelop
 ```
 
 ## Access pre-trained models. <a name="Available_Pretrained_Models"></a>
-download from [this gdrive link]() and place them into the `data` folder.
+download from [this gdrive link](https://drive.google.com/drive/folders/1fWePKPQPFlQNEyJEgmJiGLurDYFD6KDI?usp=sharing) and place them into the `data` folder.
 
 ## Apply RNA-FM. <a name="Usage"></a>
 ### 1. Embedding Extraction. <a name="RNA-FM_Embedding_Generation"></a>

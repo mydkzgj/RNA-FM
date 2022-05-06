@@ -160,45 +160,49 @@ def do_prediction(
 
 
 import numpy as np
-def preprocess_ss_map(prob_map, seq, threshold=0.5):
-    # For secondary structure post processing
-    include_pairs = ['AU', 'UA', 'GC', 'CG', 'GU', 'UG']
+def preprocess_ss_map(prob_map, seq, threshold=0.5, nc=True):
+    canonical_pairs = ['AU', 'UA', 'GC', 'CG', 'GU', 'UG']  # for farfar2
 
-    # candidate 1
-    if threshold > 0:
-        contact = (prob_map > threshold)
-    else:
-        contact = prob_map
+    # candidate 1: threshold
+    contact = (prob_map > threshold)
 
+    # notes: for e2efold, do not need this step
     prob_map = prob_map * (1 - np.eye(prob_map.shape[0]))
 
-    # candidate 2
-    row_max_index = np.argmax(prob_map, axis=1)
-    row_max_map = np.zeros_like(contact)
-    for i, ri in enumerate(row_max_index):
-        seq_pair = seq[i] + seq[ri]
-        if seq_pair not in include_pairs:
-            continue
-        if abs(i - ri) < 4:
-            continue
-        row_max_map[i, ri] = 1
+    seq_len = len(seq)
 
-    # candidate 3
-    col_max_index = np.argmax(prob_map, axis=0)
-    col_max_map = np.zeros_like(contact)
-    for i, ci in enumerate(col_max_index):
-        seq_pair = seq[ci] + seq[i]
-        if seq_pair not in include_pairs:
-            continue
-        if abs(i - ci) < 4:
-            continue
-        col_max_map[ci, i] = 1
+    x_array, y_array = np.nonzero(contact)
+    prob_array = []
+    for i in range(x_array.shape[0]):
+        prob_array.append(prob_map[x_array[i], y_array[i]])
+    prob_array = np.array(prob_array)
 
-    max_mask = row_max_map * col_max_map
+    sort_index = np.argsort(-prob_array)
 
-    contact = contact * max_mask
+    mask_map = np.zeros_like(contact)
+    already_x = set()
+    already_y = set()
+    for index in sort_index:
+        x = x_array[index]
+        y = y_array[index]
+
+        seq_pair = seq[x] + seq[y]
+        if seq_pair not in canonical_pairs and nc == True:
+            # print(seq_pair)
+            continue
+            pass
+
+        if x in already_x or y in already_y:
+            continue
+        else:
+            mask_map[x, y] = 1
+            already_x.add(x)
+            already_y.add(y)
+
+    contact = contact * mask_map
 
     return contact
+
 
 
 def save_ss2ct(prob_map, seq, seq_id, save_file, threshold=0.5):
