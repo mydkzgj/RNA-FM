@@ -351,7 +351,7 @@ class ESMStructuralSplitDataset(torch.utils.data.Dataset):
         split_level,
         cv_partition,
         split,
-        root_path=os.path.expanduser('~/.cache/torch/data/lm'),
+        root_path=os.path.expanduser('~/.cache/torch/data/fm'),
         download=False,
     ):
         super().__init__()
