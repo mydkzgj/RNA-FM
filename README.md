@@ -22,6 +22,7 @@ You can find more details about **RNA-FM** in our paper, ["Interpretable RNA Fou
 - [Usage](#usage)
   - [RNA-FM Embedding Generation](#RNA-FM_Embedding_Generation)
   - [RNA Secondary Structure Prediction](#RNA_Secondary_Structure_Prediction)
+  - [Server](#Server)
 - [Citations](#citations)
 - [License](#license)
 </details>
@@ -59,6 +60,11 @@ python launch/predict.py --config="pretrained/ss_prediction.yml" \
 --save_frequency 1
 ```
 The predicted probability maps will be saved in form of `.npy` files, and the post-processed binary predictions will be saved in form of `.ct` files. You can find them in the `$save_dir/r-ss`.
+
+### 3. Online Version - RNA-FM server. <a name="Server"></a>
+If you have any trouble with the deployment of the local version of RNA-FM, you can access its online version from this link, [RNA-FM server](https://proj.cse.cuhk.edu.hk/rnafm/#/).
+You can easily submit jobs on the server and download results from it afterwards, without setting up environment and occupying any computational resources.
+
 
 ## Citations <a name="citations"></a>
 
