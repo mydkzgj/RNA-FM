@@ -1,7 +1,7 @@
 # RNA-FM
 This repository contains codes and pre-trained models for **RNA foundation model (RNA-FM)**.
 **RNA-FM outperforms all tested single-sequence RNA language models across a variety of structure prediction tasks as well as several function-related tasks.**
-You can find more details about **RNA-FM** in our paper, ["" (xx et al., 2022).](https://www.runoob.com)
+You can find more details about **RNA-FM** in our paper, ["Interpretable RNA Foundation Model from Unannotated Data for Highly Accurate RNA Structure and Function Predictions" (Chen et al., 2022).](https://arxiv.org/abs/2204.00300)
 
 <details><summary>Citation</summary>
 
@@ -49,7 +49,7 @@ python launch/predict.py --config="pretrained/extract_embedding.yml" \
 --data_path="./data/examples/example.fasta" --save_dir="./resuts" \
 --save_frequency 1 --save_embeddings
 ```
-RNA-FM embeddings with shape of (L,640) will be saved in the `$save_dir/representations` 
+RNA-FM embeddings with shape of (L,640) will be saved in the `$save_dir/representations`.
 
 ### 2. Downstream Prediction - RNA secondary structure. <a name="RNA_Secondary_Structure_Prediction"></a>
 ```
@@ -57,7 +57,7 @@ python launch/predict.py --config="pretrained/ss_prediction.yml" \
 --data_path="./data/examples/example.fasta" --save_dir="./resuts" \
 --save_frequency 1
 ```
-The predicted probability maps will be saved in form of `.npy` files, and the post-processed binary predictions will be saved in form of `.ct` files. You can find them in the `$save_dir/r-ss`
+The predicted probability maps will be saved in form of `.npy` files, and the post-processed binary predictions will be saved in form of `.ct` files. You can find them in the `$save_dir/r-ss`.
 
 ## Citations <a name="citations"></a>
 
