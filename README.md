@@ -28,19 +28,20 @@ You can find more details about **RNA-FM** in our paper, ["Interpretable RNA Fou
 
 
 ## Create Environment with Conda <a name="Setup_Environment"></a>
+First, download the repository and create the environment.
 ```
 git clone https://github.com/mydkzgj/RNA-FM.git
 cd ./RNA-FM
 conda env create -f environment.yml
 ```
-Then activate the "RNA-FM" environment
+Then, activate the "RNA-FM" environment.
 ```
 conda activate RNA-FM
 cd ./redevelop
 ```
 
 ## Access pre-trained models. <a name="Available_Pretrained_Models"></a>
-Download from [this gdrive link](https://drive.google.com/drive/folders/1fWePKPQPFlQNEyJEgmJiGLurDYFD6KDI?usp=sharing) and place the pth files into the `pretrained` folder.
+Download pre-trained models from [this gdrive link](https://drive.google.com/drive/folders/1fWePKPQPFlQNEyJEgmJiGLurDYFD6KDI?usp=sharing) and place the pth files into the `pretrained` folder.
 
 ## Apply RNA-FM. <a name="Usage"></a>
 ### 1. Embedding Extraction. <a name="RNA-FM_Embedding_Generation"></a>
