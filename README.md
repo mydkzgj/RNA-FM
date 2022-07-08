@@ -34,7 +34,7 @@ git clone https://github.com/mydkzgj/RNA-FM.git
 cd ./RNA-FM
 conda env create -f environment.yml
 ```
-Then, activate the "RNA-FM" environment.
+Then, activate the "RNA-FM" environment and enter into the workspace.
 ```
 conda activate RNA-FM
 cd ./redevelop
