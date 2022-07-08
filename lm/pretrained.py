@@ -3,7 +3,7 @@
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
 
-import my_esm
+import lm
 import torch
 from argparse import Namespace
 import warnings
@@ -54,7 +54,7 @@ def load_model_and_alphabet_core(model_data, regression_data=None, theme="protei
     if regression_data is not None:
         model_data["model"].update(regression_data["model"])
 
-    alphabet = my_esm.Alphabet.from_architecture(model_data["args"].arch, theme=theme)
+    alphabet = lm.Alphabet.from_architecture(model_data["args"].arch, theme=theme)
 
     if model_data["args"].arch == 'roberta_large':
         # upgrade state dict
@@ -64,7 +64,7 @@ def load_model_and_alphabet_core(model_data, regression_data=None, theme="protei
         model_args = {pra(arg[0]): arg[1] for arg in vars(model_data["args"]).items()}
         model_state = {prs1(prs2(arg[0])): arg[1] for arg in model_data["model"].items()}
         model_state["embed_tokens.weight"][alphabet.mask_idx].zero_()  # For token drop
-        model_type = my_esm.ProteinBertModel
+        model_type = lm.ProteinBertModel
     elif model_data["args"].arch == 'protein_bert_base':
 
         # upgrade state dict
@@ -72,7 +72,7 @@ def load_model_and_alphabet_core(model_data, regression_data=None, theme="protei
         prs = lambda s: ''.join(s.split('decoder.')[1:] if 'decoder' in s else s)
         model_args = {pra(arg[0]): arg[1] for arg in vars(model_data["args"]).items()}
         model_state = {prs(arg[0]): arg[1] for arg in model_data["model"].items()}
-        model_type = my_esm.ProteinBertModel
+        model_type = lm.ProteinBertModel
     elif model_data["args"].arch == 'msa_transformer':
 
         # upgrade state dict
@@ -83,7 +83,7 @@ def load_model_and_alphabet_core(model_data, regression_data=None, theme="protei
         model_args = {pra(arg[0]): arg[1] for arg in vars(model_data["args"]).items()}
         model_state = {prs1(prs2(prs3(arg[0]))): arg[1] for arg in model_data["model"].items()}
 
-        model_type = my_esm.MSATransformer
+        model_type = lm.MSATransformer
 
     else:
         raise ValueError("Unknown architecture selected")

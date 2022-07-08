@@ -6,13 +6,11 @@ You can find more details about **RNA-FM** in our paper, ["" (xx et al., 2022).]
 <details><summary>Citation</summary>
 
 ```bibtex
-@article{rives2019biological,
-  author={Rives, Alexander and Meier, Joshua and Sercu, Tom and Goyal, Siddharth and Lin, Zeming and Liu, Jason and Guo, Demi and Ott, Myle and Zitnick, C. Lawrence and Ma, Jerry and Fergus, Rob},
-  title={Biological Structure and Function Emerge from Scaling Unsupervised Learning to 250 Million Protein Sequences},
-  year={2019},
-  doi={10.1101/622803},
-  url={https://www.biorxiv.org/content/10.1101/622803v4},
-  journal={bioRxiv}
+@article{chen2022interpretable,
+  title={Interpretable rna foundation model from unannotated data for highly accurate rna structure and function predictions},
+  author={Chen, Jiayang and Hu, Zhihang and Sun, Siqi and Tan, Qingxiong and Wang, Yixuan and Yu, Qinze and Zong, Licheng and Hong, Liang and Xiao, Jin and King, Irwin and others},
+  journal={arXiv preprint arXiv:2204.00300},
+  year={2022}
 }
 ```
 </details>
