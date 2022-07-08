@@ -29,6 +29,8 @@ You can find more details about **RNA-FM** in our paper, ["" (xx et al., 2022).]
 
 ## Create Environment with Conda <a name="Setup_Environment"></a>
 ```
+git clone https://github.com/mydkzgj/RNA-FM.git
+cd ./RNA-FM
 conda env create -f environment.yml
 ```
 Then activate the "RNA-FM" environment
